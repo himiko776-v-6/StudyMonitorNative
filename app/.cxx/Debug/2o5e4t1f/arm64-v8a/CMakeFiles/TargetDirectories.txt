@@ -1,0 +1,3 @@
+/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/.cxx/Debug/2o5e4t1f/arm64-v8a/CMakeFiles/mnnllmapp.dir
+/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/.cxx/Debug/2o5e4t1f/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/.cxx/Debug/2o5e4t1f/arm64-v8a/CMakeFiles/rebuild_cache.dir

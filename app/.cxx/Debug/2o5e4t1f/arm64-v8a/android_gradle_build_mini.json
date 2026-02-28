@@ -1,0 +1,29 @@
+{
+  "buildFiles": [
+    "/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/tester501/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/.cxx/Debug/2o5e4t1f/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/tester501/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/.cxx/Debug/2o5e4t1f/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "mnnllmapp::@6890427a1f51a3e7e1df": {
+      "artifactName": "mnnllmapp",
+      "abi": "arm64-v8a",
+      "output": "/home/tester501/.openclaw/workspace-zhongshu/StudyMonitorNative/app/build/intermediates/cxx/Debug/2o5e4t1f/obj/arm64-v8a/libmnnllmapp.so",
+      "runtimeFiles": [
+        "/home/tester501/project/android/build_64/lib/libMNN.so"
+      ]
+    }
+  }
+}

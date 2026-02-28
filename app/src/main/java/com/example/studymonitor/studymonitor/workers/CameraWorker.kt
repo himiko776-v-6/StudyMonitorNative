@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.example.studymonitor.studymonitor.StudyMonitorService
+import com.example.studymonitor.camera.CameraManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
@@ -88,12 +88,12 @@ class CameraWorker(
     /**
      * 拍照
      * 使用 CameraX 实现拍照功能
-     * ⚠️ 此 Worker 不直接操作相机，而是通过 Service 获取
+     * ⚠️ 此 Worker 不直接操作相机，而是通过 CameraManager 获取
      */
     private suspend fun captureImage(): Bitmap? {
-        // CameraWorker 通过 StudyMonitorService 获取相机图片
-        // 实际拍照在 Service 中通过 CameraManager 实现
-        return StudyMonitorService.getInstance(applicationContext)?.capturePhoto()
+        // CameraWorker 通过 CameraManager 获取相机图片
+        val cameraManager = CameraManager(applicationContext)
+        return cameraManager.capturePhoto()
     }
     
     /**

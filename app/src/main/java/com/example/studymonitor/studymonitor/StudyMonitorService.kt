@@ -185,7 +185,7 @@ class StudyMonitorService(private val context: Context) {
         _currentStats.value = StudyStats()
         
         Log.d(TAG, "学习会话开始: $currentSessionId")
-        true
+        return true
     }
     
     /**
@@ -209,7 +209,7 @@ class StudyMonitorService(private val context: Context) {
         _currentStats.value = finalStats
         
         Log.d(TAG, "学习会话结束: $currentSessionId, 统计: $finalStats")
-        finalStats
+        return finalStats
     }
     
     /**
