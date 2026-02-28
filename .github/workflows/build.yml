@@ -27,6 +27,15 @@ jobs:
     - name: Generate Gradle Wrapper
       run: gradle wrapper --gradle-version 8.13
       
+    - name: Download MNN Prebuilt Libraries
+      run: |
+        mkdir -p project/android/build_64/lib
+        curl -L -o project/android/build_64/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN.so.android.arm64-v8a
+        curl -L -o project/android/build_64/lib/libMNN_CL.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN_CL.so.android.arm64-v8a || true
+        curl -L -o project/android/build_64/lib/libMNN_Vulkan.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN_Vulkan.so.android.arm64-v8a || true
+        mkdir -p project/android/build_32/lib
+        curl -L -o project/android/build_32/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN.so.android.armeabi-v7a || true
+      
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
       
