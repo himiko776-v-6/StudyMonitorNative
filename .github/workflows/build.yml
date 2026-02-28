@@ -25,7 +25,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
       
     - name: Generate Gradle Wrapper
-      run: gradle wrapper --gradle-version 8.13
+      run: gradle wrapper --gradle-version 9.1.0
       
     - name: Download MNN Prebuilt Libraries
       run: |
