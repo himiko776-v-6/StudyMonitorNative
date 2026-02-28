@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Book icon for study monitor -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,54m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M54,30L54,78M30,42L54,30L78,42M30,42L30,66L54,78L78,66L78,42"/>
+    <path
+        android:fillColor="#388E3C"
+        android:pathData="M42,48L42,60L54,66L54,54Z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M66,48L66,60L54,66L54,54Z"/>
+</vector>

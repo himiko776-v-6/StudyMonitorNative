@@ -1,0 +1,40 @@
+# Build outputs
+/build/
+/app/build/
+*.apk
+*.aab
+
+# Gradle
+.gradle/
+local.properties
+gradlew
+gradlew.bat
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Kotlin
+*.class
+*.jar
+*.kt.swp
+
+# Native
+*.so
+*.o
+*.a
+
+# Logs
+*.log
+
+# Secrets
+*.jks
+*.keystore
+secrets.properties
+
+# OS
+Thumbs.db
+.DS_Store
