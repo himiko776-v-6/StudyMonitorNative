@@ -27,20 +27,37 @@ jobs:
     - name: Generate Gradle Wrapper
       run: gradle wrapper --gradle-version 8.9
       
-    - name: Download MNN Prebuilt Libraries
+    - name: Download MNN Headers and Prebuilt Libraries
       run: |
-        mkdir -p /home/runner/project/android/build_64/lib
-        curl -L -o /home/runner/project/android/build_64/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN.so.android.arm64-v8a
-        curl -L -o /home/runner/project/android/build_64/lib/libMNN_CL.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN_CL.so.android.arm64-v8a || true
-        curl -L -o /home/runner/project/android/build_64/lib/libMNN_Vulkan.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN_Vulkan.so.android.arm64-v8a || true
-        mkdir -p /home/runner/project/android/build_32/lib
-        curl -L -o /home/runner/project/android/build_32/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/2.8.0/libMNN.so.android.armeabi-v7a || true
+        # 创建 MNN 目录结构
+        MNN_ROOT=/home/runner/MNN
+        
+        # 下载 MNN 源码（仅需要的头文件目录）
+        git clone --depth 1 --filter=blob:none --sparse https://github.com/alibaba/MNN.git $MNN_ROOT
+        cd $MNN_ROOT
+        git sparse-checkout set include transformers tools/audio 3rd_party
+        
+        # 创建预编译库目录
+        mkdir -p project/android/build_64/lib
+        mkdir -p project/android/build_32/lib
+        
+        # 下载 MNN 3.4.0 预编译库
+        curl -L -o project/android/build_64/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/3.4.0/libMNN.so.android.arm64-v8a
+        curl -L -o project/android/build_64/lib/libMNN_CL.so https://github.com/alibaba/MNN/releases/download/3.4.0/libMNN_CL.so.android.arm64-v8a || true
+        curl -L -o project/android/build_64/lib/libMNN_Vulkan.so https://github.com/alibaba/MNN/releases/download/3.4.0/libMNN_Vulkan.so.android.arm64-v8a || true
+        curl -L -o project/android/build_32/lib/libMNN.so https://github.com/alibaba/MNN/releases/download/3.4.0/libMNN.so.android.armeabi-v7a || true
+        
+        echo "MNN_ROOT=$MNN_ROOT" >> $GITHUB_ENV
       
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
+      env:
+        MNN_ROOT: /home/runner/MNN
       
     - name: Build Release APK
       run: ./gradlew assembleRelease --no-daemon
+      env:
+        MNN_ROOT: /home/runner/MNN
       
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4

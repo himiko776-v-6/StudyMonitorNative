@@ -31,14 +31,20 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
 target_link_options(${CMAKE_PROJECT_NAME} PRIVATE "-Wl,-z,max-page-size=16384")
 
 #mnn
-set (MNN_SOURCE_ROOT "${CMAKE_SOURCE_DIR}/../../../../../../../")
-#set (MNN_SOURCE_ROOT "/Users/songjinde/git/DAI/AliNNPrivate")
-set (MNN_INSTALL_ROOT "${MNN_SOURCE_ROOT}/project/android/build_64")
-# set (MNN_INSTALL_ROOT "/Users/songjinde/MNN/project/android/build_64")
+# 支持环境变量 MNN_ROOT 或使用默认路径
+if(DEFINED ENV{MNN_ROOT})
+    set(MNN_SOURCE_ROOT "$ENV{MNN_ROOT}")
+    message(STATUS "Using MNN_ROOT from environment: ${MNN_SOURCE_ROOT}")
+else()
+    # 默认路径（CI 环境）
+    set(MNN_SOURCE_ROOT "/home/runner/MNN")
+    message(STATUS "Using default MNN_ROOT: ${MNN_SOURCE_ROOT}")
+endif()
 
-#set (MNN_ROOT "${CMAKE_SOURCE_DIR}/../../../../../../../")
-message(INFO "MNN_SOURCE_ROOT: ${MNN_SOURCE_ROOT}")
-message(INFO "MNN_INSTALL_ROOT: ${MNN_INSTALL_ROOT}")
+set(MNN_INSTALL_ROOT "${MNN_SOURCE_ROOT}/project/android/build_64")
+
+message(STATUS "MNN_SOURCE_ROOT: ${MNN_SOURCE_ROOT}")
+message(STATUS "MNN_INSTALL_ROOT: ${MNN_INSTALL_ROOT}")
 
 include_directories("${MNN_SOURCE_ROOT}/include/")
 
